@@ -5,7 +5,12 @@ function removeAllChildNodes(parent) {
 }
 
 function selectGridSize(){
-    rango = window.prompt("Enter grid size: ");
+    rango = Math.floor(window.prompt("Enter grid size: "));
+
+    if(rango > 64 || rango == 0 || typeof(rango) !== "number"){
+        rango = 1; // EN CASO DE QUE PONGA UN VALOR ILEGAL
+    }
+    
     let cellSize = container.getBoundingClientRect()['width']/rango;
     removeAllChildNodes(container);
     
