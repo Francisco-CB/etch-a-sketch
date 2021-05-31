@@ -6,14 +6,18 @@ function removeAllChildNodes(parent) {
 
 function selectGridSize(){
     rango = window.prompt("Enter grid size: ");
-    
+    let cellSize = container.getBoundingClientRect()['width']/rango;
     removeAllChildNodes(container);
+    
+    container.style.setProperty('grid-template-columns', `repeat(${rango}, ${cellSize}px)`);
+    container.style.setProperty('grid-template-rows', `repeat(${rango}, ${cellSize}px)`);
 
     for(let i=0; i<rango; i++){
-        div = document.createElement('div');
-        div.classList.add("pixel");
-        div.textContent = `${i}`;
-        container.appendChild(div);
+        for(let j=0; j<rango; j++){
+            div = document.createElement('div');
+            div.classList.add("pixel");
+            container.appendChild(div);
+        }
     }
 }
 
