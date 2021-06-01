@@ -6,11 +6,9 @@ h1, button {
     margin: 0px auto;
     font: garamond;
     font-style: italic;
-    background-color: cadetblue;
 }
 
 .pixel {
-    color:brown;
     border: 1px solid black;
 }
 
@@ -21,7 +19,7 @@ h1, button {
     grid-auto-flow: column;
     justify-content: center;
     place-items: center;
-    row-gap: 15px;
+    row-gap: 12px;
 }
 
 #div-principal{
@@ -31,8 +29,6 @@ h1, button {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-auto-flow: row;
     place-items: stretch;
-    justify-content: space-evenly;
-    align-content: space-evenly;
+    place-content: stretch;
 }
