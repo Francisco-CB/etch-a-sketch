@@ -4,6 +4,11 @@ function removeAllChildNodes(parent) {
     }
 }
 
+function eraseGrid(){
+    elements = document.getElementsByClassName("pixel");
+    Array.from(elements).forEach(element => element.setAttribute("style", "background-color: white;"));
+}
+
 function changePixelColor(event, color="black"){
     if (event.ctrlKey){
         let color = "white"
@@ -57,9 +62,12 @@ let div; // VARIABLE PARA GUARDAR DIVS A AGREGAR A DIV PRINCIPAL
 let rango; // RANGO DE GRID
 let children; // PARA GUARDAR CHILDREN DE DIV PRINCIPAL
 let pixeles; // PARA GUARDAR CLASE PIXEL DE CELDAS A PINTAR
-let max = 80; // RANGO MÁXIMO DE GRID
+let max = 85; // RANGO MÁXIMO DE GRID
 
 const container = document.getElementById("div-principal");
 const sizeButton = document.getElementById("size-button");
+const eraseButton = document.getElementById("erase-button");
 
 sizeButton.addEventListener("click", selectGridSize);
+eraseButton.addEventListener("click", eraseGrid);
+
