@@ -4,9 +4,14 @@ function removeAllChildNodes(parent) {
     }
 }
 
-function changePixelColor(event){
-    target = event.target;
-    target.setAttribute("style", "background-color:black;");
+function changePixelColor(event, color="black"){
+    if (event.ctrlKey){
+        let color = "white"
+        event.target.setAttribute("style", `background-color: ${color};`);
+    }
+    else {
+        event.target.setAttribute("style", `background-color: ${color};`);
+    }
 }
 
 function classAddRemoveEventListeners(clss, eventListener, func, action="add"){
