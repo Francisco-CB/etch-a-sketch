@@ -7,8 +7,9 @@ function removeAllChildNodes(parent) {
 function selectGridSize(){
     rango = Math.floor(window.prompt("Enter grid size: "));
 
-    if(rango > 70 || rango == 0 || typeof(rango) !== "number"){
+    if(rango > max || rango == 0 || typeof(rango) !== "number"){
         rango = 1; // EN CASO DE QUE PONGA UN VALOR ILEGAL
+        alert(`Valor máximo de ${max}!`);
     }
     
     removeAllChildNodes(container);
@@ -29,6 +30,7 @@ function selectGridSize(){
 let div; // VARIABLE PARA GUARDAR DIVS A AGREGAR A DIV PRINCIPAL
 let rango; // RANGO DE GRID
 let children; // PARA GUARDAR CHILDREN DE DIV PRINCIPAL
+let max = 70;
 const container = document.getElementById("div-principal");
 const sizeButton = document.getElementById("size-button");
 
