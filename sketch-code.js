@@ -60,6 +60,15 @@ function selectGridSize(){
     classAddRemoveEventListeners("pixel", "mousedown", changePixelColor, action="add");
 }
 
+function getHelp(){
+    msge = `Welcome to Etch-a-Sketch! Follow the instructions to use it.
+            1) Select the size you would like your grid to be.
+            2) Click on a cell to color it. 
+            4) Keep you mouse pressed and move it to color faster.
+            5) If you want to clear everything, just press "Erase all"!`;
+    alert(msge);
+}
+
 let div; // VARIABLE PARA GUARDAR DIVS A AGREGAR A DIV PRINCIPAL
 let rango; // RANGO DE GRID
 let children; // PARA GUARDAR CHILDREN DE DIV PRINCIPAL
@@ -70,9 +79,11 @@ let isMousePressed;
 const container = document.getElementById("div-principal");
 const sizeButton = document.getElementById("size-button");
 const eraseButton = document.getElementById("erase-button");
+const helpButton = document.getElementById("help-button");
 
 sizeButton.addEventListener("click", selectGridSize);
 eraseButton.addEventListener("click", eraseGrid);
-window.addEventListener("mousedown", event => {isMousePressed = true
-console.log(event)});
+helpButton.addEventListener("click", getHelp);
+
+window.addEventListener("mousedown", event => {isMousePressed = true});
 window.addEventListener("mouseup", event => {isMousePressed = false});
