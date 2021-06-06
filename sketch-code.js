@@ -4,20 +4,39 @@ function removeAllChildNodes(parent) {
     }
 }
 
-function selectGridSize(){
-    rango = Math.floor(window.prompt("Enter grid size: "));
+function changePixelColor(event){
+    target = event.target;
+    target.setAttribute("style", "background-color:black;");
+}
 
+function classAddRemoveEventListeners(clss, eventListener, func, action="add"){
+    elements = document.getElementsByClassName(clss);
+    if (action=="add"){
+        Array.from(elements).forEach(element => element.addEventListener(eventListener, func))
+    }
+    else if(action=="remove"){
+        Array.from(elements).forEach(element => element.removeEventListener(eventListener, func))
+    }
+}
+
+function selectGridSize(){
+    // SE ELIMINAN LOS EVENTLISTENER QUE HAYAN
+    classAddRemoveEventListeners("pixel", "mouseenter", changePixelColor, action="remove");
+
+    rango = Math.floor(window.prompt("Enter grid size: "));
     if(rango > max || rango == 0 || typeof(rango) !== "number"){
         rango = 1; // EN CASO DE QUE PONGA UN VALOR ILEGAL
         alert(`Valor máximo de ${max}!`);
     }
     
+    // SE ELIMINAN TODOS LOS PIXELES QUE HAYAN
     removeAllChildNodes(container);
     
+    // SE AGREGAN LAS NUEVAS CELDAS
     container.style.setProperty('grid-template-columns', `repeat(${rango}, 1fr)`);
     container.style.setProperty('grid-template-rows', `repeat(${rango}, 1fr)`);
 
-    // SE AGREGAN LAS CELDAS
+    // SE AGREGAN LOS NUEVOS PIXELES
     for(let i=0; i<rango; i++){
         for(let j=0; j<rango; j++){
             div = document.createElement('div');
@@ -25,12 +44,16 @@ function selectGridSize(){
             container.appendChild(div);
         }
     }
+    // SE AGREGAN LOS EVENTLISTENERS NECESARIOS
+    classAddRemoveEventListeners("pixel", "mouseenter", changePixelColor, action="add");
 }
 
 let div; // VARIABLE PARA GUARDAR DIVS A AGREGAR A DIV PRINCIPAL
 let rango; // RANGO DE GRID
 let children; // PARA GUARDAR CHILDREN DE DIV PRINCIPAL
-let max = 70;
+let pixeles; // PARA GUARDAR CLASE PIXEL DE CELDAS A PINTAR
+let max = 80; // RANGO MÁXIMO DE GRID
+
 const container = document.getElementById("div-principal");
 const sizeButton = document.getElementById("size-button");
 

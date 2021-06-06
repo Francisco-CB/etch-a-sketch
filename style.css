@@ -20,10 +20,6 @@ button {
     background-color: whitesmoke;
 }
 
-.pixel:hover{
-    background-color: black;
-}
-
 #contenedor-general{
     display: grid;
     grid-template-columns: 500px;
