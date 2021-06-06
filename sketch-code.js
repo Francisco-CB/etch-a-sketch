@@ -31,7 +31,7 @@ function selectGridSize(){
     rango = Math.floor(window.prompt("Enter grid size: "));
     if(rango > max || rango == 0 || typeof(rango) !== "number"){
         rango = 1; // EN CASO DE QUE PONGA UN VALOR ILEGAL
-        alert(`Valor máximo de ${max}!`);
+        alert(`Maximum range of ${max}!`);
     }
     
     // SE ELIMINAN TODOS LOS PIXELES QUE HAYAN
